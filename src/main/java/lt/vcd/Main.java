@@ -4,59 +4,50 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        if (!scanner.hasNextInt()) return;
-        int n = scanner.nextInt();
-
-        int[] residents = new int[n + 1];
-        int totalResidents = 0;
-        int leftTotal = 0, leftCount = 0;
-        int rightTotal = 0, rightCount = 0;
-
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int n = sc.nextInt();
+        int[] namai = new int[n + 1];
+        int viso = 0;
+        int kair_viso = 0, kair_kiek = 0;
+        int des_viso = 0, des_kiek = 0;
+        
         for (int i = 1; i <= n; i++) {
-            residents[i] = scanner.nextInt();
-            totalResidents += residents[i];
-
-
+            namai[i] = sc.nextInt();
+            viso += namai[i];
             if (i % 2 != 0) {
-                leftTotal += residents[i];
-                leftCount++;
+                kair_viso += namai[i];
+                kair_kiek++;
             } else {
-                rightTotal += residents[i];
-                rightCount++;
+                des_viso += namai[i];
+                des_kiek++;
             }
         }
-
-        System.out.println("Total residents: " + totalResidents);
-        System.out.println("Residents on the left: " + leftTotal);
-        System.out.println("Residents on the right: " + rightTotal);
-
-
-        if (leftCount == 0) {
+        
+        System.out.println("Total residents: " + viso);
+        System.out.println("Residents on the left: " + kair_viso);
+        System.out.println("Residents on the right: " + des_viso);
+        
+        if (kair_kiek == 0) {
             System.out.println("Average per house on the left: N/A");
         } else {
-            double leftAvg = (double) leftTotal / leftCount;
-
-            if (leftAvg == (int) leftAvg) {
-                System.out.println("Average per house on the left: " + (int) leftAvg);
+            double vid = (double) kair_viso / kair_kiek;
+            if (vid == (int) vid) {
+                System.out.println("Average per house on the left: " + (int) vid);
             } else {
-                System.out.println("Average per house on the left: " + leftAvg);
+                System.out.println("Average per house on the left: " + vid);
             }
         }
-
-
-        if (rightCount == 0) {
+        
+        if (des_kiek == 0) {
             System.out.println("Average per house on the right: N/A");
         } else {
-            double rightAvg = (double) rightTotal / rightCount;
-            if (rightAvg == (int) rightAvg) {
-                System.out.println("Average per house on the right: " + (int) rightAvg);
+            double vid = (double) des_viso / des_kiek;
+            if (vid == (int) vid) {
+                System.out.println("Average per house on the right: " + (int) vid);
             } else {
-                System.out.println("Average per house on the right: " + rightAvg);
+                System.out.println("Average per house on the right: " + vid);
             }
         }
-
-        scanner.close();
     }
 }
